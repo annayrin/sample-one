@@ -1,0 +1,74 @@
+
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+
+
+}
+
+.containerDiv {
+    display: flex;
+    width: 50%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.textHolder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.textHolder > h3 {
+    font-family: "Caveat", cursive;
+    color: #cc3333;
+    font-size: 46px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.textHolder > h2 {
+    font-family: "Poppins", sans-serif;
+    text-transform: capitalize;
+    line-height: 1.2;
+    font-size: 60px;
+    font-weight: 900;
+    color: #2a435d;
+    margin: 0;
+}
+.textHolder > h2 > span {
+    color: #cc3333;
+}
+
+.imageHolder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageHolder > img {
+    width: 90%;
+    display: block;
+}
+
+@media (max-width: 991px) {
+
+
+    .container {
+        width: 80%;
+        flex-direction: column;
+    }
+    .containerDiv {
+        width: 100%;
+        justify-content: center;
+    }
+}

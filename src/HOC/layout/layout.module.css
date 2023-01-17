@@ -1,0 +1,13 @@
+.layout {
+    width: 100%;
+    min-width: 375px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.layoutMainContent {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}

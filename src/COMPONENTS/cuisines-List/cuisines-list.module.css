@@ -1,0 +1,32 @@
+.cuisinesList {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.listItem {
+    width: 90%;
+}
+
+.listItem > button {
+    text-align: start;
+    padding-left: 25%;
+    font-size: 14px;
+}
+.activeButton {
+    background: var(--red);
+    color: var(--white);
+}
+
+.activeButton:hover {
+    background: var(--red);
+    color: var(--white);
+
+}

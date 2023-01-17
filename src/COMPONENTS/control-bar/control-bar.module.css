@@ -1,0 +1,30 @@
+.controlBar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.searchContainer {
+    width: 60%;
+    height: 100%;
+}
+
+.controlButtons {
+    width: 40%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+.controlButtons > * {
+    font-size: 16px;
+}
+
+.favoriteIcon, .locationIcon {
+    padding: 5px;
+}
+
+.favoriteIcon > span, .locationIcon > span {
+    font-size: 30px;
+}

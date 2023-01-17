@@ -1,0 +1,7 @@
+.fieldError {
+    font-size: 11px;
+    font-family: Oswald-bold, serif;
+    letter-spacing: .48pt;
+    color: var(--danger);
+    height: 16px;
+}

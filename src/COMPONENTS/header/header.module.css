@@ -1,0 +1,84 @@
+.header {
+    z-index: 10;
+    padding: 0 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 6px rgba(238, 237, 237, 0.33);
+}
+
+.headerContent {
+    width: 100%;
+    height: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.headerNavigation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navItem {
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.buttonGroup {
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.logo {
+    height: 100%;
+    max-height: 50px;
+}
+
+.navLinksList {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+
+}
+
+.listItem {
+    width: auto;
+    height: 100%;
+    position: relative;
+}
+
+.listItem:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--red);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 300ms;
+}
+
+.listItem:hover:after {
+    width: 100%;
+}
+
+.listItem > a {
+    width: 100%;
+}
