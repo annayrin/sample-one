@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './button.module.css'
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-const Button = ({progress, type, label, disabled, color, className, width, height, rounded, onClick }) => {
+const Button = ({progress, type, label, disabled, color, className, width, height, rounded, onClick, onMouseOver, onMouseLeave }) => {
     const cls = [
         classes.button,
         classes[color ?? 'default'],
@@ -22,6 +22,8 @@ const Button = ({progress, type, label, disabled, color, className, width, heigh
             style={style}
             className={cls.join(' ')}
             onClick={onClick}
+            onMouseOver={onMouseOver}
+            onMouseLeave={onMouseLeave}
         >
             {progress
                 ? <ScaleLoader color={'var(--white)'} size={50} height={12} width={1}/>
