@@ -5,3 +5,5 @@ export const selectActiveCuisine = state => state.homePage.activeCuisine
 
 export const selectHomeFilterItems = state => state.homePage.filterItems
 export const selectHomeActiveFilterIcon = state => state.homePage.activeFilterIcon
+
+export const selectHomeSearchValue = state => state.homePage.searchValue

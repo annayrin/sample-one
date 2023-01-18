@@ -1,3 +1,4 @@
 export const SET_ACTIVE_CUISINE = "SET_ACTIVE_CUISINE"
 
 export const SET_ACTIVE_ICON = "SET_ACTIVE_ICON"
+

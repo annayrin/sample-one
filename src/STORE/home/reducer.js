@@ -1,5 +1,6 @@
-import {SET_ACTIVE_CUISINE, SET_ACTIVE_ICON} from "./saga-types";
+import {SET_ACTIVE_CUISINE, SET_ACTIVE_ICON, SET_FILTERED_RESTAURANTS} from "./saga-types";
 import images from "../../UTILITIES/images";
+import {SET_SEARCH_VALUE} from "./action-type";
 
 const initialState = {
     progress: null,
@@ -19091,39 +19092,45 @@ const initialState = {
         {id: 'greek', name: 'Հունական'},
         {id: 'indian', name: 'Հնդկական'},
     ],
-    activeCuisine: {id: 'all', name: 'Բոլորը'},
+    activeCuisine: {id: "all", name: "Բոլորը"},
     filterItems: [
-        {img:images.promoBurger, label: "burger"},
-        {img:images.pizza, label: "pizza"},
-        {img:images.sushi, label: "sushi"},
-        {img:images.barbecue, label: "barbecue"},
-        {img:images.cakes, label: "cakes"},
-        {img:images.pasta, label: "pasta"},
-        {img:images.salads, label: "salads"},
-        {img:images.shawarma, label: "shawarma"},
-        {img:images.juices, label: "juices"},
-        {img:images.chicken, label: "chicken"},
-        {img:images.woks, label: "woks"},
+        {img:images.promoBurger, label: "burger", name: "բուրգեր"},
+        {img:images.pizza, label: "pizza", name: "պիցցա" },
+        {img:images.sushi, label: "sushi", name: "սուշի"},
+        {img:images.barbecue, label: "barbecue", name: "խորոված"},
+        {img:images.cakes, label: "cakes", name: "տորթ"},
+        {img:images.pasta, label: "pasta", name: "պաստա"},
+        {img:images.salads, label: "salads", name: "աղցան"},
+        {img:images.shawarma, label: "shawarma", name: "շաուրմա"},
+        {img:images.juices, label: "juices", name: "խմիչք"},
+        {img:images.chicken, label: "chicken", name: "հավ"},
+        {img:images.woks, label: "woks", name: "չինական"},
 
     ],
-    activeFilterIcon: null,
-    searchValue: []
-
+    activeFilterIcon: {img: "", label: "", name: ""},
+    searchValue: "",
 }
 
 export default function homePageReducer(state = initialState, action) {
     switch (action.type) {
-        case SET_ACTIVE_CUISINE:
+        case SET_ACTIVE_CUISINE: // do I need the filter value in redux or maybe keep in the local state of the component??
             return {
                 ...state,
-                activeCuisine: action.payload
+                activeCuisine: action.payload,
             }
 
         case SET_ACTIVE_ICON:
             return {
                 ...state,
-                activeFilterIcon: action.payload
+                activeFilterIcon: action.payload,
+
             }
+        case SET_SEARCH_VALUE:
+            return {
+                ...state,
+                searchValue: action.payload
+            }
+
         default:
             return {
                 ...state

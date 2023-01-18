@@ -3,11 +3,13 @@ import classes from "./control-bar.module.css";
 import SearchBar from "../search-bar/search-bar";
 import Button from "../../UI/button/button";
 
-const ControlBar = () => {
+const ControlBar = ({handleSearch, value}) => {
+
+
     return (
         <div className={classes.controlBar}>
             <div className={classes.searchContainer}>
-                <SearchBar placeholder={"Search"}/>
+                <SearchBar placeholder={"Search"} searchValue={value} handleSearch={handleSearch}/>
             </div>
             <div className={classes.controlButtons}>
                 <Button

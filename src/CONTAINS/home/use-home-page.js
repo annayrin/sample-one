@@ -1,11 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {
-    selectActiveCuisine, selectHomeActiveFilterIcon,
+    selectActiveCuisine,
+    selectHomeActiveFilterIcon,
     selectHomeCuisines,
     selectHomeFilterItems,
-    selectHomeRestaurants
+    selectHomeRestaurants, selectHomeSearchValue
 } from "../../STORE/home/selections";
-import {selectCuisine, selectIcon} from "../../STORE/home/actions";
+import {handleSearchValue, selectCuisine, selectIcon} from "../../STORE/home/actions";
+import {useEffect, useState} from "react";
 
 const useHomePage = () => {
 
@@ -15,19 +17,54 @@ const useHomePage = () => {
     const activeCuisine = useSelector(selectActiveCuisine)
     const filterItems = useSelector(selectHomeFilterItems)
     const activeFilterIcon = useSelector(selectHomeActiveFilterIcon)
+    const searchValue = useSelector(selectHomeSearchValue)
 
-    const chooseCuisine = item => dispatch(selectCuisine(item))
-    const chooseIcon = item => dispatch(selectIcon(item))
+    const [filteredRestaurants, setFilteredRestaurants] = useState([...restaurants])
+
+    const handleSearch = event => {
+        dispatch(handleSearchValue(event.target.value))
+    }
+    const chooseCuisine = item => {
+        dispatch(selectCuisine(item))
+    }
+    const chooseIcon = item => {
+
+        if (activeFilterIcon.name !== item.name) {
+            dispatch(selectIcon(item))
+        } else {
+            dispatch(selectIcon({img: "", label: "", name: ""}))
+        }
+    }
+
+    useEffect(() => {
+        let filtered;
+        filtered = restaurants.filter(item => {
+            if (activeCuisine.id !== "all") {
+                return item.cuisines.some(item => item.id === activeCuisine.id)
+                    && ((item.name.toLowerCase().includes(activeFilterIcon.name) && item.name.toLowerCase().includes(searchValue))
+                        || (item.description.toLowerCase().includes(activeFilterIcon.name) && item.description.toLowerCase().includes(searchValue)))
+            } else {
+                return (item.name.toLowerCase().includes(activeFilterIcon.name) && item.name.toLowerCase().includes(searchValue))
+                    || (item.description.toLowerCase().includes(activeFilterIcon.name) && item.description.toLowerCase().includes(searchValue))
+            }
+        })
+
+        setFilteredRestaurants(filtered)
+
+    }, [activeCuisine, activeFilterIcon, searchValue]) // toooo complicated, need to improve this
+
 
     return {
+        filteredRestaurants,
         restaurants,
         cuisines,
         activeCuisine,
         filterItems,
         activeFilterIcon,
+        searchValue,
         chooseCuisine,
-        chooseIcon
+        chooseIcon,
+        handleSearch
     }
 }
-
 export default useHomePage
